@@ -10,8 +10,11 @@
 <div class="container mt-3">
     <h1>Account Created Successfully!</h1>
     <p>Account ID: ${savingAccount.getAccountId()}</p>
-    <p>First Name: ${savingAccount.getFirstName()}</p>
-    <p>Last Name: ${savingAccount.getLastName()}</p>
+    <p>Name: ${savingAccount.getName()}</p>
+    <p>Address: ${savingAccount.getAddress()}</p>
+    <p>District: ${savingAccount.getDistrict()}</p>
+    <p>Province: ${savingAccount.getProvince()}</p>
+    <p>Phone number: ${savingAccount.getPhoneNumber()}</p>
     <p>Balance: ${savingAccount.getBalance()}</p>
 </div>
 

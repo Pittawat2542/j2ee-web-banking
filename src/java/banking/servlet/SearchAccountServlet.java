@@ -1,6 +1,6 @@
 package banking.servlet;
 
-import banking.bankaccount.SavingAccount;
+import banking.bankaccount.BankAccount;
 import banking.model.Member;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,21 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class RegisterServlet extends HttpServlet {
+public class SearchAccountServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String name = request.getParameter("name").toLowerCase();
-            String address = request.getParameter("address").toLowerCase();
-            String district = request.getParameter("district").toLowerCase();
-            String province = request.getParameter("province").toLowerCase();
-            String phoneNumber = request.getParameter("phoneNumber").toLowerCase();
+            String accountId = request.getParameter("accountId");
             
-            SavingAccount savingAccount = Member.create(name, address, district, province, phoneNumber, 0);
-            request.setAttribute("savingAccount", savingAccount);
-            getServletContext().getRequestDispatcher("/RegistrationResult.jsp").forward(request, response);
+            BankAccount bankAccount = Member.searchBankAccountFromDB(accountId);
+            
+            request.setAttribute("account", bankAccount);
+            getServletContext().getRequestDispatcher("/SearchAccount.jsp").forward(request, response);
         }
     }
 

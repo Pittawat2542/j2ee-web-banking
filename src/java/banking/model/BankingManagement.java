@@ -31,7 +31,7 @@ public class BankingManagement {
 
         if (account != null) {
             if (account.getBalance() >= amount) {
-                Member.update(origin, null, null, account.getBalance() - amount, 0, true, false);
+                Member.update(origin, null, null, null, null, null, account.getBalance() - amount, 0, true, false);
                 System.out.println("Completed!");
                 return true;
             } else {
@@ -48,7 +48,7 @@ public class BankingManagement {
         SavingAccount account = Member.read(origin);
 
         if (account != null) {
-            Member.update(origin, null, null, account.getBalance() + amount, 0, true, false);
+            Member.update(origin, null, null, null, null, null, account.getBalance() + amount, 0, true, false);
             System.out.println("Completed!");
             return true;
         } else {

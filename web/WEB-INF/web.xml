@@ -8,6 +8,10 @@
         <servlet-name>BankingManagementServlet</servlet-name>
         <servlet-class>banking.servlet.BankingManagementServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchAccountServlet</servlet-name>
+        <servlet-class>banking.servlet.SearchAccountServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>BankingManagementServlet</servlet-name>
         <url-pattern>/BankingManagementServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchAccountServlet</servlet-name>
+        <url-pattern>/SearchAccountServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

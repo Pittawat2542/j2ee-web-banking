@@ -1,35 +1,52 @@
 package banking.bankaccount;
 
-public class BankAccount {
-    private String accountId;
-    private String firstName;
-    private String lastName;
-    private double balance;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-    public BankAccount(String firstName, String lastName) {
+public class BankAccount {
+
+    private String accountId;
+    private String name;
+    private double balance;
+    private String address;
+    private String district;
+    private String province;
+    private String phoneNumber;
+
+    public BankAccount(String name, double balance, String address, String district, String province, String phoneNumber) {
         accountId = java.util.UUID.randomUUID().toString();
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
+        this.balance = balance;
+        this.address = address;
+        this.district = district;
+        this.province = province;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public BankAccount(ResultSet rs) throws SQLException {
+        accountId = rs.getString("accountNumber");
+        name = rs.getString("accountName");
+        address = rs.getString("address");
+        district = rs.getString("district");
+        province = rs.getString("province");
+        phoneNumber = rs.getString("phoneNumber");
+        balance = Double.parseDouble(rs.getString("amount"));
     }
 
     public String getAccountId() {
         return accountId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
-    public void setFirstName(String ownerFirstName) {
-        this.firstName = ownerFirstName;
+    public String getName() {
+        return name;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String ownerLastName) {
-        this.lastName = ownerLastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getBalance() {
@@ -39,6 +56,37 @@ public class BankAccount {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-    
-    
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
 }

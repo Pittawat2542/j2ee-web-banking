@@ -1,53 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package banking.servlet;
 
-import banking.model.BankingManagement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class BankingManagementServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String action = request.getParameter("action");
-            boolean actioned = false;
+            String accountId = (String) request.getParameter("accountId");
+            String password = (String) request.getParameter("password");
             
-            switch (action) {
-                case "deposit":
-                    String depositAccountId = request.getParameter("depositAccountId");
-                    double depositAmount = 0;
-                    if (request.getParameter("depositAmount") != null) {
-                        depositAmount = Double.parseDouble(request.getParameter("depositAmount"));
-                    }
-                    actioned = BankingManagement.deposit(depositAccountId, depositAmount);
-                    break;
-                case "withdraw":
-                    String withdrawAccountId = request.getParameter("withdrawAccountId");
-                    double withdrawAmount = 0;
-                    if (request.getParameter("withdrawAmount") != null) {
-                    withdrawAmount = Double.parseDouble(request.getParameter("withdrawAmount"));
-                    }
-                    actioned = BankingManagement.withdraw(withdrawAccountId, withdrawAmount);
-                    break;
-                case "transfer":
-                    String deleteAccountId = request.getParameter("deleteAccountId");
-                    actioned = BankingManagement.delete(deleteAccountId);
-                    break;
-                case "delete":
-                    break;
-                default:
-
+            String loggedIn = "";
+            
+            if (password.equals("password")) {
+                loggedIn = "success";
+                HttpSession session = request.getSession();
+                session.setAttribute("accountId", accountId);
+                getServletContext().getRequestDispatcher("/dashboard.jsp").forward(request, response);
+            } else {
+                loggedIn = "failed";
+                            request.setAttribute("loggedIn", loggedIn);
+            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
             }
-            
-            String actionStatus = actioned ? (action.toUpperCase() + " Completed!") : (action.toUpperCase() + " Failed!");
-            
-            request.setAttribute("actionStatus", actionStatus);
-            getServletContext().getRequestDispatcher("/BankingManagementResult.jsp").forward(request, response);
+//            getServletContext().getRequestDispatcher("/index.jsp").include(request, response);
         }
     }
 

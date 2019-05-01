@@ -16,15 +16,22 @@
             <li class="nav-item">
                 <a class="nav-link" href="${request.getAttribute("javax.servlet.forward.request_uri")}BankingManagementPage.jsp">Management</a>
             </li>
-                        <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="${request.getAttribute("javax.servlet.forward.request_uri")}AllAccounts.jsp">All Accounts</a>
             </li>
-                                    <li class="nav-item">
-                <a class="nav-link" href="${request.getAttribute("javax.servlet.forward.request_uri")}SearchAccount.jsp">Search Account</a>
+            <li class="nav-item">
+                <!--<a class="nav-link" href="${request.getAttribute("javax.servlet.forward.request_uri")}SearchAccount.jsp">Search Account</a>-->
+                <a class="nav-link" href="SearchAccountServlet">Search Account</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <a class="nav-link text-warning" href="${request.getAttribute("javax.servlet.forward.request_uri")}register.jsp">Register</a>
-        </form>
+        <%
+            if (request.getSession().getAttribute("accountId") != null) {
+                out.println("<a class=\"nav-link text-warning\" href=\"DashboardServlet\">Dashboard</a>");
+                out.println("<form action=\"LogoutServlet\" method=\"POST\"><button class=\"btn btn-danger\">Logout</button></form>");
+            } else {
+                out.println("<a class=\"nav-link text-warning\" href=\"register.jsp\">Register</a>");
+                out.println("<a class=\"nav-link text-warning\" href=\"login.jsp\">Login</a>");
+            }
+        %>
     </div>
 </nav>

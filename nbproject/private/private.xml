@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>web/components/navbar.jsp</url>
+            <bookmark id="1">
+                <name/>
+                <line>27</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/pittawat.pete/NetBeansProjects/Banking/web/dashboard.jsp</file>
+            <file>file:/Users/pittawat.pete/NetBeansProjects/Banking/src/java/banking/servlet/SearchAccountServlet.java</file>
             <file>file:/Users/pittawat.pete/NetBeansProjects/Banking/web/SearchAccount.jsp</file>
+            <file>file:/Users/pittawat.pete/NetBeansProjects/Banking/src/java/banking/utils/PasswordEncryption.java</file>
+            <file>file:/Users/pittawat.pete/NetBeansProjects/Banking/web/components/navbar.jsp</file>
+            <file>file:/Users/pittawat.pete/NetBeansProjects/Banking/src/java/banking/servlet/LogoutServlet.java</file>
+            <file>file:/Users/pittawat.pete/NetBeansProjects/Banking/src/java/banking/servlet/LoginServlet.java</file>
         </group>
     </open-files>
 </project-private>

@@ -4,15 +4,15 @@
     Author     : pittawat.pete
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.Vector, banking.model.Member, banking.bankaccount.SavingAccount" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.Vector, banking.model.Member, banking.bankaccount.SavingAccount, banking.bankaccount.BankAccount" %>
 <%@ include file="components/header.jsp"%>
 <%
-    Vector allAccounts = Member.getAllMembers();
+    Vector allAccounts = Member.getAllAccountsFromDB();
     if (allAccounts.size() > 0) {
         out.println("<h2 class=\"text-center mt-3 mb-3\">All Accounts</h2><hr>");
         out.println("<table class=\"table\"><thead><tr class=\"table-info\"><th scope=\"col\">#</th><th scope=\"col\">Account ID</th><th scope=\"col\">Name</th><th scope=\"col\">Address</th><th scope=\"col\">District</th><th scope=\"col\">Province</th><th scope=\"col\">Phone Number</th><th scope=\"col\">Balance</th></tr></thead><tbody>");
         for (int i = 0; i < allAccounts.size(); i++) {
-            SavingAccount savingAccount = (SavingAccount) allAccounts.get(i);
+            BankAccount savingAccount = (BankAccount) allAccounts.get(i);
             out.println("<tr>");
             out.println("<td>");
             out.println((i + 1));

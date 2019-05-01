@@ -55,6 +55,16 @@
         <input type="hidden" name="action" value="transfer">
         <button type="submit" class="btn btn-primary">Transfer</button>
     </form>
+    <hr>
+    <h2>Delete Account</h2>
+    <form action="BankingManagementServlet" method="POST">
+        <div class="form-group">
+            <label for="depositAccountId">Account ID</label>
+            <input type="text" class="form-control" id="deleteAccountId" name="deleteAccountId" placeholder="Account ID">
+        </div>
+        <input type="hidden" name="action" value="delete">
+        <button type="submit" class="btn btn-danger">Delete Account</button>
+    </form>
 </div>
 
 <%@include file="components/footer.jsp"%>
